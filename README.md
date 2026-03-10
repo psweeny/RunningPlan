@@ -14,11 +14,11 @@ This generates a 12-week plan for the Boston Marathon, printing a week-by-week s
 To create a custom plan:
 
 ```python
-from marathon_plan import MarathonPlan
+from marathon_plan import MarathonPlan, MARATHON_DISTANCE_KM
 from week_schedule import Race
 import datetime as dt
 
-race = Race('Boston Marathon', dt.date(2026, 4, 20), 42.195)
+race = Race('Boston Marathon', dt.date(2026, 4, 20), MARATHON_DISTANCE_KM)
 plan = MarathonPlan(weeks=16, base=40.0, peak=100.0, race=race)
 print(plan.report())
 ```
