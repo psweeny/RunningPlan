@@ -14,7 +14,7 @@ def next_weekday(date: dt.date, weekday: int):
 
 
 class MarathonPlan:
-    def __init__(self, weeks: int, base=40.0, peak=100.0, race: Race = None, units='km'):
+    def __init__(self, weeks=12, base=40.0, peak=100.0, race: Race = None, units='km'):
         assert weeks > 1, "a training plan must span more than 1 week"
         assert 0 < base <= peak, "base must be between 0 and peak distance"
         self._weeks = weeks
@@ -28,7 +28,7 @@ class MarathonPlan:
     def _build_schedule(self, weeks: int, race: Race) -> list[WeekSchedule]:
         schedule: list[WeekSchedule] = []
         distance = self._base_distance
-        delta = (self._peak_distance - self._base_distance) / (weeks - 1)
+        delta = (4 / 3) *(self._peak_distance - self._base_distance) / (weeks - 1)
         for week_no in range(1, weeks - 1):
             taper = 0.8 if (week_no % 4) == 0 else 1
             schedule.append(WeekSchedule(week_no, self._week_date(week_no), taper * distance))
@@ -62,3 +62,6 @@ class MarathonPlan:
 
     def weeks_duration(self):
         return len(self._week_schedule)
+
+    def weeks(self) -> int:
+        return self._weeks
