@@ -1,6 +1,8 @@
 # RunningPlan
 
-A marathon training plan generator that produces periodised weekly schedules based on your race date and target mileage.
+A marathon training plan generator that produces periodised weekly schedules based on an upcoming race date and target mileage.
+
+Create a training plan in the run-up to a major race event, typically a half-marathon or longer.  Tell the plan your current weekly mileage and the maximum peak mileage you want to run per week.  Choose the days of the week you would like to run, the type of running sessions that you want on each day, by setting a running pattern.  The planner will then create the schedule for each day, including the suggested running distance to safely increase mileage and avoid injury.
 
 
 ## Usage
