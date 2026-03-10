@@ -1,0 +1,26 @@
+---
+alwaysApply: true
+---
+
+# RunningPlan
+
+A Python marathon training plan generator that creates periodized weekly training schedules.
+
+## Architecture
+
+- **`Session`** (`week_schedule.py`): A single training session with name, date, type, and distance. Session types (enum `SessionType`): Rest, Recovery, Easy, Interval, Long, Race. Pattern codes: `R`=Recovery, `E`=Easy, `I`=Interval, `L`=Long, ` `=Rest.
+- **`WeekSchedule`** (`week_schedule.py`): Manages 7 sessions for a week, built from a pattern string. Default is `LEE_GRANTHAM_PATTERN = "REI REL"`. Distributes total weekly distance equally across non-rest sessions.
+- **`Race`** (`week_schedule.py`): Subclass of `Session` for race events.
+- **`MarathonPlan`** (`marathon_plan.py`): Orchestrates the full plan. Linearly interpolates distance from `base` to `peak`, applies 80% taper every 4th week, and tapers the final 2 weeks (penultimate at 75%, race week at 55% of peak).
+
+## Running Tests
+
+```bash
+python -m unittest discover tests/ -v
+python -m unittest tests.marathon_plan_test.MarathonPlanTest.test_name -v
+```
+
+## Environment
+
+- Python 3.13.2 via pyenv, virtual environment in `.venv/`
+- Dependencies: numpy, matplotlib
