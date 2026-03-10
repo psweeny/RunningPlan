@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /Users/psweeny/develop/RunningPlan | grep -E \"\\\\.\\(md|txt|yml|yaml|cfg|ini|toml|lock\\)$\")",
+      "Bash(grep -r \"import\\\\|from\" /Users/psweeny/develop/RunningPlan/*.py 2>/dev/null | head -20)",
+      "Bash(python -m pytest tests/ --collect-only 2>&1 | head -30)",
+      "Bash(/Users/psweeny/develop/RunningPlan/.venv/bin/pip list:*)",
+      "Bash(/Users/psweeny/develop/RunningPlan/.venv/bin/python -m unittest discover tests/ -v 2>&1 | head -30)",
+      "Bash(/Users/psweeny/develop/RunningPlan/.venv/bin/python -m unittest tests.marathon_plan_test.MarathonPlanTest -v 2>&1 | head -50)",
+      "Bash(/Users/psweeny/develop/RunningPlan/.venv/bin/python running_plan.py 2>&1 | head -50)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(source .venv/bin/activate && python -m unittest discover tests/ -v 2>&1)",
+      "Bash(source .venv/bin/activate && python -m unittest tests.marathon_plan_test -v 2>&1; python -m unittest tests.week_schedule_test -v 2>&1)",
+      "Bash(source .venv/bin/activate && python -m unittest discover -v -s tests -p \"*_test.py\" 2>&1)",
+      "Bash(.venv/bin/python -c \"import pytest; print\\(pytest.__version__\\)\" 2>&1)",
+      "Bash(.venv/bin/pip install:*)",
+      "Bash(.venv/bin/pytest tests/ -v 2>&1)"
+    ]
+  }
+}
